@@ -1,60 +1,6 @@
 
 # Implement a Planning Search
 
-##
-FAILED (failures=2, errors=1)
-Nishants-MacBook-Pro:AIND-Planning nishantdoctor$ python -m unittest -v
-test_AC_actions (tests.test_my_air_cargo_problems.TestAirCargoMethods) ... ok
-test_AC_get_actions (tests.test_my_air_cargo_problems.TestAirCargoMethods) ... ok
-test_AC_result (tests.test_my_air_cargo_problems.TestAirCargoMethods) ... ok
-test_h_ignore_preconditions (tests.test_my_air_cargo_problems.TestAirCargoMethods) ... ok
-test_ACP1_num_fluents (tests.test_my_air_cargo_problems.TestAirCargoProb1) ... ok
-test_ACP1_num_requirements (tests.test_my_air_cargo_problems.TestAirCargoProb1) ... ok
-test_ACP2_num_fluents (tests.test_my_air_cargo_problems.TestAirCargoProb2) ... ok
-test_ACP2_num_requirements (tests.test_my_air_cargo_problems.TestAirCargoProb2) ... ok
-test_ACP3_num_fluents (tests.test_my_air_cargo_problems.TestAirCargoProb3) ... ok
-test_ACP3_num_requirements (tests.test_my_air_cargo_problems.TestAirCargoProb3) ... ok
-test_levelsum (tests.test_my_planning_graph.TestPlanningGraphHeuristics) ... FAIL
-test_add_action_level (tests.test_my_planning_graph.TestPlanningGraphLevels) ... FAIL
-test_add_literal_level (tests.test_my_planning_graph.TestPlanningGraphLevels) ... FAIL
-test_competing_needs_mutex (tests.test_my_planning_graph.TestPlanningGraphMutex) ... ok
-test_inconsistent_effects_mutex (tests.test_my_planning_graph.TestPlanningGraphMutex) ... ok
-test_inconsistent_support_mutex (tests.test_my_planning_graph.TestPlanningGraphMutex) ... ok
-test_interference_mutex (tests.test_my_planning_graph.TestPlanningGraphMutex) ... ok
-test_negation_mutex (tests.test_my_planning_graph.TestPlanningGraphMutex) ... ok
-test_serialize_mutex (tests.test_my_planning_graph.TestPlanningGraphMutex) ... ok
-
-======================================================================
-FAIL: test_levelsum (tests.test_my_planning_graph.TestPlanningGraphHeuristics)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-File "/Users/nishantdoctor/Documents/AIND-Planning/tests/test_my_planning_graph.py", line 123, in test_levelsum
-self.assertEqual(self.pg.h_levelsum(), 1)
-AssertionError: 0 != 1
-
-======================================================================
-FAIL: test_add_action_level (tests.test_my_planning_graph.TestPlanningGraphLevels)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-File "/Users/nishantdoctor/Documents/AIND-Planning/tests/test_my_planning_graph.py", line 23, in test_add_action_level
-self.assertEqual(len(self.pg.a_levels[0]), 3, len(self.pg.a_levels[0]))
-AssertionError: 6 != 3 : 6
-
-======================================================================
-FAIL: test_add_literal_level (tests.test_my_planning_graph.TestPlanningGraphLevels)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-File "/Users/nishantdoctor/Documents/AIND-Planning/tests/test_my_planning_graph.py", line 31, in test_add_literal_level
-self.assertEqual(len(self.pg.s_levels[1]), 4, len(self.pg.s_levels[1]))
-AssertionError: 2 != 4 : 2
-
-----------------------------------------------------------------------
-Ran 19 tests in 0.056s
-
-FAILED (failures=3)
-
-##
-
 ## Synopsis
 
 This project includes skeletons for the classes and functions needed to solve deterministic logistics planning problems for an Air Cargo transport system using a planning search agent. 

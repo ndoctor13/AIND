@@ -314,8 +314,15 @@ class PlanningGraph():
                     if s_node in new_a_node.prenodes:
                         new_a_node.parents.add(s_node)
                         s_node.children.add(new_a_node)
-            self.a_levels[level].add(new_a_node)
-                    #new_a_nodes.add(new_a_node)
+                        self.a_levels[level].add(new_a_node)
+        # for action_node in self.a_levels[level]:
+        #     print("--start temp action node ---")
+        #     action_node.show()
+        #     for parent in action_node.parents:
+        #         print("-- start parent node ---")
+        #         parent.show()
+        #         print("-- end parent node---")
+        #     print("--- end temp action node ---")
 
 
     def add_literal_level(self, level):
@@ -337,21 +344,11 @@ class PlanningGraph():
         #   parent sets of the S nodes
         self.s_levels.append(set())
 
-        for literal in self.fs.pos:
-            new_s_node = PgNode_s(literal, True)
-            for a_node in self.a_levels[level - 1]:
-                if new_s_node in a_node.effnodes:
-                    a_node.children.add(new_s_node)
-                    new_s_node.parents.add(a_node)
-            self.s_levels[level].add(new_s_node)
-
-        for literal in self.fs.neg:
-            new_s_node = PgNode_s(literal, False)
-            for a_node in self.a_levels[level - 1]:
-                if new_s_node in a_node.effnodes:
-                    a_node.children.add(new_s_node)
-                    new_s_node.parents.add(a_node)
-            self.s_levels[level].add(new_s_node)
+        for action_node in self.a_levels[level-1]:
+            for possible_literals in action_node.effnodes:
+                action_node.children.add(possible_literals)
+                possible_literals.parents.add(action_node)
+                self.s_levels[level].add(possible_literals)
 
 
     def update_a_mutex(self, nodeset):
@@ -543,6 +540,17 @@ class PlanningGraph():
         :return: int
         """
         level_sum = 0
+        visitedStates = set()
         # TODO implement
         # for each goal in the problem, determine the level cost, then add them together
-        return level_sum
+        for g in self.problem.goal:
+            l_index = -1
+            for levelStates in self.s_levels:
+                l_index += 1
+                for state in levelStates:
+                    if (g == state.symbol and state not in visitedStates):
+                        level_sum += l_index
+                        visitedStates.add(state)
+                        break
+        
+        return level_sum - 1
