@@ -1,0 +1,120 @@
+Project 1: Built an isolation game where player moves like a knight from chess. Built an algorithm where the human player wins >75% of the time against a computer in any situation and difficulty level. This was done based on alpha-beta pruning with min-max algorithm and iterative deepening. Built a evaluation function that chooses the best score in the allotted time frame and searching a certain depth in the tree. 
+
+Project 2: Built a sudoku game where the the human player can solve the most difficult sudoku in less than 2 seconds. This was based on the constraint function.
+
+Project 3: Build a planning graph for a flight that loads and unloads a cargo and a plan that flies from one airport to another. The planning graph with forward state space search using propositional logic along with depth first search or breath first search or A* algorithm to perform the search on various action to reach the goal state. Each action has a precondition state and an effect state. The project also included planning graph which uses STRIP method to define actions, their effects and the goal. It goes into mutex and interference problems on how different action can interfere with the effects. A problem on removing flat tire from axle and replacing with spare tire from trunk was solved which included multiple actions and their mutex and coming up with a plan to reach the final goal. 
+
+Project 4: Build an Gaussian HMM training model that trained gesture words. The x and y points of the hand gestures for each was preprocessed and given by the project. The points x and y for right and let hand was used from each video frame for each word was used and feature sets were created. These feature sets are normalizing the data by finds the position of x and y for both hands with respect to nose as the origin, finding delta values between x and x-1 or y and y-1 points, and other feature sets. These feature sets are then used to train on Gaussian HMM model by splitting the features set to different states and optimizing the training model. Once trained, log likelihood for each word is calculated to understand the fit by using the score method. The best number of states selected for Gaussian HMM is done by choosing one of the model selector like KFold Constant Validator, BIC (Bayesian Information Criteria) or DIC (Discriminative Information Criteria). This model identifies the best fitted model based on states. The states value are incrementally increased to the max defined states and finds the best model that does good fitting with the best states value. Once the model was trained with best fitting and states value, a few sentences with different words was used as a test to see how well the model predicts the word. Best word error rate (WER = 1 - (true positive/total words)) was close to 50% indicating that the model select was not great in identifying the best states for fitting the mode. 50% words were guessed incorrectly. 
+
+On^2 is worse than Onlogn is worse than On is worse than Ologn
+
+log(n) is basically finding a person in a phonebook that is sorted by first name. You divide the phone book half and see if the person is on left or right of it. You keep dividing until you find the person. N stands for number of people in the phone and base 2 of log is the division factor. So n/2^x = 1 where this means that you keep dividing the phonebook by 2 until you reach to the lowest number beyond which you cannot go down. X is the number of iteration. So n = 2^x. Take log both sides so x = log2(n)
+
+https://www.codeproject.com/Questions/500926/Whatplusisplusnpluslogplusnplusmeanspluspracticall
+
+https://stackoverflow.com/questions/9152890/what-would-cause-an-algorithm-to-have-olog-n-complexity
+
+Search Algorithm
+
+A* search is a low cost search or uniform cost search where f = g + h. g= path cost, h= shortest estimated distance to the goal. This is similar to uniform cost search where it finds the cheapest cost path (shortest distance) from state A to B. 
+
+Depth-first search is opposite of breath first search. It goes as deep as it can first until it finds the goal then it goes back to the starting point and goes to the next path till the deepest point
+
+Breath first search expands one node at a time and takes the shortest length to expand next. 
+
+https://classroom.udacity.com/nanodegrees/nd889/parts/6be67fd1-9725-4d14-b36e-ae2b5b20804c/modules/f719d723-7ee0-472c-80c1-663f02de94f3/lessons/36fc5b2f-6367-4808-b87c-0faa42744994/concepts/4e06a0da-40b1-48a4-a4d3-a95ceebfb468
+
+Iterative improving/Simulated Annealing is a process where you keep changing the temperature i.e. some random number until your position settles at the maximum position of a peak. The heuristic equation for this process is e^deltaE/T where delta E is the change in position and T is the temperature. 
+
+Genetic Algorithm - Select positions based on their fitness in a problem and then breed children based on mutation that will eventually converge on a solution
+
+Random restart - Pick multiple random positions on the graph and then hill climb and take the best results
+
+Contraint Satisfaction: 
+
+Backtracking Search: Least containing value - choose the variable that rules out the fewest values in the remaining values For example https://classroom.udacity.com/nanodegrees/nd889/parts/6be67fd1-9725-4d14-b36e-ae2b5b20804c/modules/f719d723-7ee0-472c-80c1-663f02de94f3/lessons/3f2905bf-3b12-4b31-b025-dfefecfcc7ac/concepts/61836380570923
+
+Min remaining value - choose the variable with the fewest legal values For e.g. https://classroom.udacity.com/nanodegrees/nd889/parts/6be67fd1-9725-4d14-b36e-ae2b5b20804c/modules/f719d723-7ee0-472c-80c1-663f02de94f3/lessons/3f2905bf-3b12-4b31-b025-dfefecfcc7ac/concepts/61836380570923
+
+Logic & Reasoning - Proposional Logic - This is the boolean table with the logical operator theorem similar to AND, NOR. OR and XOR gates in digital circuits
+
+Proposional vs First Order Logic
+https://www.youtube.com/watch?v=3Vz21ID8sAc
+
+Planning Graph: read from page 395 http://aima.cs.berkeley.edu/2nd-ed/newchap11.pdf
+
+
+What is KB?
+
+https://discussions.udacity.com/t/whats-the-user-story-of-goal-test-in-project-3/227682
+
+https://discussions.udacity.com/t/what-does-propkb-do/428779
+
+Bayes Rule
+P(A|B) = P(B|A).P(A)
+		—————
+		P(B)
+Where A = Cancer is present and ~A is Cancer not present; B is test that detects A accurately and ~B does not detect A accurately. 
+So Bayes network uses two variables to determine the probability of a cancer is present (A) if the test is positive (B) I.e. P(A|B).
+https://classroom.udacity.com/nanodegrees/nd889/parts/6be67fd1-9725-4d14-b36e-ae2b5b20804c/modules/2f4c2a0b-989e-4b73-b782-ad8fbdfd541f/lessons/c476a77c-2316-49fd-9d69-311e4dd46f69/concepts/b61d9ca5-29bc-44e1-b4e1-23ac75a5377b
+
+HMM:
+Hidden Markov Model is a training algorithm that is used to recognize pattern over time for example a “I” gesture in sign language. Other examples are speech, handwriting etc. HMM are distributed in states. If you know the output of a certain phenomenon then you derive the total number of states out of the output depending on how the output is transitions over time. For example a simple curve that changes from 0 to 5 to 8 to 10 to 5. This output phenomena has 4 states since there are four transition.
+
+HMM training is taking a few repeated examples of a particular gesture, example “I”. Lets say each example has some feature set. You make sure that each example has the same feature set i.e. lets say “y” movements (hand movement along y axis) over time. Each example will have x data sample so to start off, you divide the total data samples by # of states. Initially the states are hidden so you come up with a random number of states. Lets say there are 16 data samples and 3 states so that means you divide the set in 3 bucks with each bucket having 5 samples (16/5 = 5). Then you find mean and stddev for each bucket from all examples and determine how each states fits the bucket. A gaussian graph is created to understand how well the model fits. You keep repeating this until the data samples match perfectly with each state. 
+
+https://classroom.udacity.com/nanodegrees/nd889/parts/6be67fd1-9725-4d14-b36e-ae2b5b20804c/modules/2f4c2a0b-989e-4b73-b782-ad8fbdfd541f/lessons/e65b4881-b15a-447e-a943-82a313820b1d/concepts/62251912110923
+
+As seen above, each example may have more than one feature set. Like x movements, y movements, y-x movements etc. The more feature set you use to train HMM, the better accuracy you get for each gesture or example. In the project, we used 4 features from each example like say “Vegetable”. Each feature set had lefthand-x, lefthand-y, righthand-x, righthand-y over time. All feature for each time were put in one array and then each example had X data samples and each gesture had more than 12 examples. 
+
+HMM Training uses Baum-Welsh re-estimation to find the best fit along with HMM training. This gives better estimates as compared to just using HMM training.
+
+KFold with Cross-Validator:
+This method is used to split the dataset into training and test using X folds. Lets say you have 112 examples for each gesture and you don’t know what example to train and test. You can pick a fold number, say 3, then you divide 112/3 = 37 examples. Now you pick random 37 examples to use for testing and the rest for training using Gaussian HMM or other machine learning techniques. Since its 3 folds, you will repeat this 3 times by picking 37 random examples each time. You will take the average of the results from each fold to understand the performance of overall examples. 
+
+http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html
+
+Best fit model using DIC and BIC
+A model fit can be also determined using DIC and BIC to understand the performance of Gaussian HMM training mode. DIC scores the training by choosing the trained word and all other words against the scoring of the trained model and then comparing how well the model behaves. 
+
+http://www2.imm.dtu.dk/courses/02433/doc/ch6_slides.pdf
+
+ https://pdfs.semanticscholar.org/ed3d/7c4a5f607201f3848d4c02dd9ba17c791fc2.pdf
+
+Fold, DIC and BIC are model selectors that help in determining the fitness of the HMM training. 
+
+Physical activity detection using SVM classifier :
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3795931/#R32
+https://www.researchgate.net/publication/51708661_Physical_Activity_Classification_Using_the_GENEA_Wrist-Worn_Accelerometer
+
+Calculate mag and frequency component from a signal 
+
+https://stackoverflow.com/questions/7674877/how-to-get-frequency-from-fft-result
+
+I specialize in ideation and hardware design for medical devices and am driven by getting teams to identify and pursue truly unmet needs in this space that impact patient lives.
+
+Experienced with product development under FDA regulated environments, compliance with electrical, safety and medical device standards (IEC 60601-1, AAMI, IPC, FCC). Specific research expertise in designing animal trials, data analysis and translating research prototypes into commercial products.
+
+
+Term 2:
+
+Neural Networks is basically perceptrons that take in input from multiple sources and using a set regression equation it gives an output 1 or 0 which is then passed onto the next neuron. Basically similar function as a neuron in a brain where dendrites takes input from multiple sources and then fires 1 or 0 to the axon.
+
+https://classroom.udacity.com/nanodegrees/nd889/parts/16cf5df5-73f0-4afa-93a9-de5974257236/modules/6124bd95-dec2-44f9-bf3b-498ea57699c7/lessons/47f6c25c-7749-4a02-b807-7a5b37f362e8/concepts/a3b18b18-8496-4775-af48-921ab35bd306
+
+Perceptron Trick - Lets say you have multiple data points but separated into two distinct features for example positive and negative. The data points are randomly distributed on a 2-axis. At first you draw a random line with random weight and bias, lets say 3X1 + 4X2 - 10 = 0 where 3 and 4 are weights and -10 is bias. You then use this eq and run each data point to it. If the positive point is in the negative region i.e. the X,Y point is a positive value and when inputed into the eq gives a negative value then the position point is in the negative region. This point you ask the line to move closer to it by multiplying a learning rate of example 0.1 to each weight and bias and then adding the result to the original weight and this gives you new weight and bias and thats your new equation. You keep doing this until almost all points are in the right region and divided properly by the equation. 
+
+https://classroom.udacity.com/nanodegrees/nd889/parts/16cf5df5-73f0-4afa-93a9-de5974257236/modules/6124bd95-dec2-44f9-bf3b-498ea57699c7/lessons/47f6c25c-7749-4a02-b807-7a5b37f362e8/concepts/8ea20904-0215-4e44-afa9-bb5a720bd028
+
+Discrete vs Continuous - Instead of defining if a particular class belongs to a certain group with yes and no, we say if with what probability the class belongs to that group. For example, 67% likely that a person got accepted based on the grades and test scores he got. This allows us to get continuous data. 
+
+Sigmoid Function - It is a function that gives a probability score for two classes such as if the point belongs in red or blue region. It takes the linear function and then inputs the coordinates of the point into the function and gets a score. If the score is greater than 0 then it gives a probability over greater than 50% while if a score is less than 0 then its a probability of less than 50%. Sigmoid equation is defined by 1/(1 + e^-x) for the equation of the function where x = value of the function of equation wx1 + wx1 + b (x1 and x2 are the tuple points).
+
+Softmax function - This is similar to sigmoid except it can take more than 2 classes to give a probability score. For example if the animal is beaver, duck or bird based on the features such as no of features, teeth, legs etc. The score that is obtained from the linear function is converted to exp function and that defines the probability score. 
+
+https://classroom.udacity.com/nanodegrees/nd889/parts/16cf5df5-73f0-4afa-93a9-de5974257236/modules/6124bd95-dec2-44f9-bf3b-498ea57699c7/lessons/47f6c25c-7749-4a02-b807-7a5b37f362e8/concepts/9e1364a8-e8b4-4eac-be12-4d44a139f721
+
+Maximum likelihood - It is increasing the probability value of the total model thus indicating if the model is a good fit or not. If the probability of the overall model is low then its a bad fit. Increasing probability can be done in a few ways i.e. looking at how well each point fits to the model. For example if the blue point is in the blue region then its probability is 0.7 but if a red point is in blue region then its probability will be (1 - blue probability) which would be a lower value. Finally you take log of the sum all the probability of a point and how well they fit in the model. If the value is lower compared to another model then that particular model is not the best fit. 
+
+Cross-Entropy - It is the negative log of the probability number and then summing all the values to get a final probability. As probability is between 0 and 1, a log of value less than 1 give negative value so taking negative log gives a positive number. A good model will give a small total log value than a bad value. Thus cross-entropy gives an error value. A small value means less error while large value means large error
